@@ -2,19 +2,30 @@
 
 @section('content')
 
-    <h1>New Task Add</h1>
+    <h1>タスクの追加</h1>
+    
+    <div class="alert alert-info" role="alert">新しいタスクを追加できます</div>
+    
     
     <!--フォームの開始 $task を task.store に引継ぎ -->
-    {!! Form::model($task, ['route' => 'tasks.store']) !!}
+    <div class="row">
+        <div class="col-xs-6">
+            {!! Form::model($task, ['route' => 'tasks.store']) !!}
 
-        {!! Form::label('content', 'Task#') !!}
-        {!! Form::text('content') !!}
+                <div class="form-group">
+                    {!! Form::label('status', 'ステータス:') !!}
+                    {!! Form::text('status', null, ['class' => 'form-control']) !!}
+                </div>
 
-        {!! FORm::label('status', 'Status#') !!}
-        {!! Form::text('status') !!}
+                <div class="form-group">
+                    {!! Form::label('content', 'タスク内容:') !!}
+                    {!! Form::text('content', null, ['class' => 'form-control']) !!}
+                </div>
 
-        {!! Form::submit('Done') !!}
+                {!! Form::submit('投稿', ['class' => 'btn btn-primary']) !!}
 
-    {!! Form::close() !!}
+            {!! Form::close() !!}
+        </div>
+    </div>
 
 @endsection

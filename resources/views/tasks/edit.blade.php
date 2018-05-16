@@ -2,19 +2,26 @@
 
 @section('content')
 
-    <h1>Task #{{ $task->id }} Edit</h1>
+    <h1>タスク #{{ $task->id }} の編集</h1>
     
     <!--フォームの開始 / tasks.update に編集したら接続 / $task->id 引継ぎ / PUT -->
-    {!! Form::model($task, ['route' => ['tasks.update', $task->id], 'method' => 'put']) !!}
+    <div class="row">
+        <div class="col-xs-6">
+            {!! Form::model($task, ['route' => ['tasks.update', $task->id], 'method' => 'put']) !!}
+                <div class="form-group">
+                    {!! Form::label('status', 'ステータス:') !!}
+                    {!! Form::text('status', null, ['class' => 'form-control']) !!}
+                </div>
 
-        {!! Form::label('content', 'Task#') !!}
-        {!! Form::text('content') !!}
-        
-        {!! Form::label('status', 'Status#') !!}
-        {!! Form::text('status') !!}
+                <div class="form-group">
+                    {!! Form::label('content', 'タスク内容:') !!}
+                    {!! Form::text('content', null, ['class' => 'form-control']) !!}
+                </div>
 
-        {!! Form::submit('Update') !!}
+                {!! Form::submit('更新', ['class' => 'btn btn-default']) !!}
 
-    {!! Form::close() !!}
+            {!! Form::close() !!}
+        </div>
+    </div>
 
 @endsection

@@ -2,16 +2,28 @@
 
 @section('content')
 
-    <h1>Task #{{ $task->id }} の詳細</h1>
+    <h1>タスク #{{ $task->id }} の詳細</h1>
 
-    <p>{{ $task->content }}</p>
-    <p>{{ $task->status}}</p>
+    <table class="table table-bordered">
+        <tr>
+            <th>id</th>
+            <td>{{ $task->id }}</td>
+        </tr>
+        <tr>
+            <th>ステータス</th>
+            <td>{{ $task->status }}</td>
+        </tr>
+        <tr>
+            <th>タスク内容</th>
+            <td>{{ $task->content }}</td>
+        </tr>
+    </table>
     
-    {!! link_to_route('tasks.edit', 'Task Edit', ['id' => $task->id]) !!}
+    {!! link_to_route('tasks.edit', 'タスクを編集', ['id' => $task->id], ['class' => 'btn btn-default']) !!}
     
     {!! Form::model($task, ['route' => ['tasks.destroy', $task->id], 'method' => 'delete']) !!}
     
-        {!! Form::submit('delete') !!}
+        {!! Form::submit('削除', ['class' => 'btn btn-danger']) !!}
     
     {!! Form::close() !!}
     
