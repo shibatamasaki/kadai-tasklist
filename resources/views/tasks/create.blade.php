@@ -11,7 +11,7 @@
         {!! Form::text('content') !!}
 
         {!! FORm::label('status', 'Status#') !!}
-        {!! Form::text('status')
+        {!! Form::text('status') !!}
 
         {!! Form::submit('Done') !!}
 
